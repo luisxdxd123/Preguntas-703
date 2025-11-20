@@ -1,0 +1,217 @@
+{
+  "descripcion": "Ejemplos de cómo convertir diferentes formatos de preguntas a JSON",
+  
+  "ejemplo_1_formato_simple": {
+    "original": "1. ¿Qué es un firewall?\na) Un antivirus\nb) Un sistema de protección de red\nc) Un navegador\nd) Un sistema operativo\nRespuesta: b",
+    
+    "convertido_a_json": {
+      "id": 1,
+      "question": "¿Qué es un firewall?",
+      "options": [
+        "Un antivirus",
+        "Un sistema de protección de red",
+        "Un navegador",
+        "Un sistema operativo"
+      ],
+      "correctAnswer": 1
+    }
+  },
+
+  "ejemplo_2_formato_cisco": {
+    "original": "Pregunta 5: ¿Cuál de las siguientes NO es una capa del modelo OSI?\nA. Capa de presentación\nB. Capa de transporte\nC. Capa de autenticación\nD. Capa de red\nRespuesta correcta: C",
+    
+    "convertido_a_json": {
+      "id": 5,
+      "question": "¿Cuál de las siguientes NO es una capa del modelo OSI?",
+      "options": [
+        "Capa de presentación",
+        "Capa de transporte",
+        "Capa de autenticación",
+        "Capa de red"
+      ],
+      "correctAnswer": 2
+    }
+  },
+
+  "ejemplo_3_pregunta_larga": {
+    "original": "15. En un ataque de ingeniería social, el atacante manipula psicológicamente a las víctimas para que revelen información confidencial. ¿Cuál de las siguientes es la mejor defensa contra este tipo de ataque?\n1) Instalar un antivirus actualizado\n2) Capacitar a los empleados sobre seguridad\n3) Usar firewalls más potentes\n4) Cambiar contraseñas frecuentemente\nRespuesta: 2",
+    
+    "convertido_a_json": {
+      "id": 15,
+      "question": "En un ataque de ingeniería social, el atacante manipula psicológicamente a las víctimas para que revelen información confidencial. ¿Cuál de las siguientes es la mejor defensa contra este tipo de ataque?",
+      "options": [
+        "Instalar un antivirus actualizado",
+        "Capacitar a los empleados sobre seguridad",
+        "Usar firewalls más potentes",
+        "Cambiar contraseñas frecuentemente"
+      ],
+      "correctAnswer": 1
+    }
+  },
+
+  "ejemplo_4_con_caracteres_especiales": {
+    "original": "¿Qué protocolo usa el puerto 443?\na. HTTP\nb. FTP\nc. HTTPS\nd. SSH\nCorrect: c",
+    
+    "convertido_a_json": {
+      "id": 8,
+      "question": "¿Qué protocolo usa el puerto 443?",
+      "options": [
+        "HTTP",
+        "FTP",
+        "HTTPS",
+        "SSH"
+      ],
+      "correctAnswer": 2
+    }
+  },
+
+  "ejemplo_5_verdadero_falso_adaptado": {
+    "original": "¿Es cierto que un ataque de fuerza bruta intenta todas las combinaciones posibles de contraseñas?\nVerdadero / Falso\nRespuesta: Verdadero",
+    
+    "convertido_a_json": {
+      "id": 20,
+      "question": "¿Es cierto que un ataque de fuerza bruta intenta todas las combinaciones posibles de contraseñas?",
+      "options": [
+        "Verdadero",
+        "Falso",
+        "Solo en algunos casos",
+        "Depende del sistema"
+      ],
+      "correctAnswer": 0,
+      "nota": "Si tu pregunta original era Verdadero/Falso, agregar opciones adicionales para que tenga 4 opciones"
+    }
+  },
+
+  "plantilla_completa_10_preguntas": [
+    {
+      "id": 1,
+      "question": "¿Qué es el phishing?",
+      "options": [
+        "Un tipo de malware",
+        "Una técnica de ingeniería social",
+        "Un firewall",
+        "Un protocolo de seguridad"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 2,
+      "question": "¿Cuál es el propósito de un certificado SSL?",
+      "options": [
+        "Acelerar la conexión",
+        "Cifrar la comunicación",
+        "Bloquear virus",
+        "Comprimir archivos"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 3,
+      "question": "¿Qué es un ataque de denegación de servicio (DoS)?",
+      "options": [
+        "Un virus que borra archivos",
+        "Un ataque que sobrecarga el sistema",
+        "Una técnica de encriptación",
+        "Un método de autenticación"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 4,
+      "question": "¿Qué puerto utiliza SSH por defecto?",
+      "options": [
+        "21",
+        "22",
+        "23",
+        "80"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 5,
+      "question": "¿Qué es un honeypot en ciberseguridad?",
+      "options": [
+        "Un tipo de malware",
+        "Un sistema trampa para atraer atacantes",
+        "Una herramienta de encriptación",
+        "Un protocolo de red"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 6,
+      "question": "¿Qué significa VPN?",
+      "options": [
+        "Virtual Private Network",
+        "Very Protected Network",
+        "Virtual Public Network",
+        "Verified Private Network"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 7,
+      "question": "¿Cuál de estos es un algoritmo de encriptación simétrica?",
+      "options": [
+        "RSA",
+        "AES",
+        "ECC",
+        "DSA"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 8,
+      "question": "¿Qué es un exploit zero-day?",
+      "options": [
+        "Un virus antiguo",
+        "Una vulnerabilidad sin parche conocido",
+        "Un tipo de firewall",
+        "Un protocolo de seguridad"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 9,
+      "question": "¿Qué es el principio de defensa en profundidad?",
+      "options": [
+        "Usar solo un método de seguridad muy fuerte",
+        "Implementar múltiples capas de seguridad",
+        "Enfocarse solo en el firewall",
+        "Proteger solo los datos críticos"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 10,
+      "question": "¿Qué es SQL Injection?",
+      "options": [
+        "Un virus",
+        "Un ataque que explota vulnerabilidades en bases de datos",
+        "Un tipo de encriptación",
+        "Un protocolo de red"
+      ],
+      "correctAnswer": 1
+    }
+  ],
+
+  "consejos_importantes": {
+    "1": "El correctAnswer empieza en 0, no en 1",
+    "2": "Asegúrate de cerrar todas las comillas y llaves",
+    "3": "No pongas coma después del último elemento",
+    "4": "Usa comillas dobles, no simples",
+    "5": "Valida tu JSON en jsonlint.com antes de usarlo"
+  },
+
+  "mapeo_respuestas": {
+    "si_tu_respuesta_es_a": "usa correctAnswer: 0",
+    "si_tu_respuesta_es_b": "usa correctAnswer: 1",
+    "si_tu_respuesta_es_c": "usa correctAnswer: 2",
+    "si_tu_respuesta_es_d": "usa correctAnswer: 3",
+    "si_tu_respuesta_es_1": "usa correctAnswer: 0",
+    "si_tu_respuesta_es_2": "usa correctAnswer: 1",
+    "si_tu_respuesta_es_3": "usa correctAnswer: 2",
+    "si_tu_respuesta_es_4": "usa correctAnswer: 3"
+  }
+}
+

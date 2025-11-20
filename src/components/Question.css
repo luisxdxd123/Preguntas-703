@@ -1,0 +1,148 @@
+.question-container {
+  margin: 30px 0;
+}
+
+.question-text {
+  color: #2c3e50;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background: #e9ecef;
+  border-color: #667eea;
+  transform: translateX(5px);
+}
+
+.option.selected {
+  background: linear-gradient(135deg, #667eea15, #764ba215);
+  border-color: #667eea;
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+}
+
+/* Estilos para feedback de respuesta correcta */
+.option.correct {
+  background: linear-gradient(135deg, #2ecc7115, #27ae6015);
+  border-color: #2ecc71;
+  animation: correctPulse 0.5s ease;
+}
+
+@keyframes correctPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Estilos para feedback de respuesta incorrecta */
+.option.incorrect {
+  background: linear-gradient(135deg, #e7484815, #c0392b15);
+  border-color: #e74848;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+.option-radio {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #95a5a6;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.option.selected .option-radio {
+  border-color: #667eea;
+}
+
+.option.correct .option-radio {
+  border-color: #2ecc71;
+  background: #2ecc71;
+}
+
+.option.incorrect .option-radio {
+  border-color: #e74848;
+  background: #e74848;
+}
+
+.option-radio-selected {
+  width: 12px;
+  height: 12px;
+  background: #667eea;
+  border-radius: 50%;
+}
+
+.option-icon {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.option-text {
+  color: #2c3e50;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+.option.correct .option-text {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.option.incorrect .option-text {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .question-text {
+    font-size: 1.2em;
+  }
+
+  .option {
+    padding: 15px;
+  }
+
+  .option-text {
+    font-size: 1em;
+  }
+}
+

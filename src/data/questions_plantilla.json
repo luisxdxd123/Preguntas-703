@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "question": "Escribe aquí tu primera pregunta",
+    "options": [
+      "Opción A - Primera respuesta posible",
+      "Opción B - Segunda respuesta posible",
+      "Opción C - Tercera respuesta posible",
+      "Opción D - Cuarta respuesta posible"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 2,
+    "question": "Escribe aquí tu segunda pregunta",
+    "options": [
+      "Opción A",
+      "Opción B",
+      "Opción C",
+      "Opción D"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 3,
+    "question": "Escribe aquí tu tercera pregunta",
+    "options": [
+      "Opción A",
+      "Opción B",
+      "Opción C",
+      "Opción D"
+    ],
+    "correctAnswer": 2
+  }
+]
+
