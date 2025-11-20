@@ -204,7 +204,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 15px;
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -240,6 +240,35 @@
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
 
+/* Modo Diablo - Estilo especial */
+.mode-diablo {
+  background: linear-gradient(135deg, #ff6b6b15, #ee5a5a15);
+  border-color: #ff6b6b;
+}
+
+.mode-option:hover .mode-diablo {
+  background: linear-gradient(135deg, #ff6b6b25, #ee5a5a25);
+  border-color: #ff6b6b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+}
+
+.mode-option input[type="radio"]:checked + .mode-diablo {
+  background: linear-gradient(135deg, #ff6b6b25, #ee5a5a25);
+  border-color: #ff6b6b;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  animation: diabloGlow 2s ease-in-out infinite;
+}
+
+@keyframes diabloGlow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(255, 107, 107, 0.7);
+  }
+}
+
 .mode-icon {
   font-size: 2em;
   flex-shrink: 0;
@@ -267,14 +296,25 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #667eea15, #764ba215);
   padding: 10px 20px;
   border-radius: 50px;
   margin: 15px auto;
   width: fit-content;
-  border: 2px solid #667eea;
+  border: 2px solid;
   font-weight: 600;
+}
+
+.mode-badge-shuffle {
+  background: linear-gradient(135deg, #667eea15, #764ba215);
+  border-color: #667eea;
   color: #667eea;
+}
+
+.mode-badge-diablo {
+  background: linear-gradient(135deg, #ff6b6b25, #ee5a5a25);
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+  animation: diabloGlow 2s ease-in-out infinite;
 }
 
 .mode-badge-icon {

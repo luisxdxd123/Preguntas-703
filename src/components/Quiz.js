@@ -15,6 +15,7 @@ const Quiz = () => {
   const [shuffleMode, setShuffleMode] = useState(false);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [selectedRange, setSelectedRange] = useState('all');
+  const [currentMode, setCurrentMode] = useState('normal');
 
   // Función para revolver las opciones de una pregunta
   const shuffleOptions = (question) => {
@@ -41,6 +42,16 @@ const Quiz = () => {
     };
   };
 
+  // Función para revolver el orden de las preguntas (Modo Diablo)
+  const shuffleQuestions = (questions) => {
+    const shuffled = [...questions];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   // Función para filtrar preguntas por rango
   const filterQuestionsByRange = (range) => {
     switch (range) {
@@ -54,21 +65,24 @@ const Quiz = () => {
     }
   };
 
-  const handleStart = (shuffle = false, range = 'all') => {
-    setShuffleMode(shuffle);
+  const handleStart = (mode = 'normal', range = 'all') => {
+    setShuffleMode(mode !== 'normal');
+    setCurrentMode(mode);
     setSelectedRange(range);
     
     // Filtrar preguntas por rango
-    const filteredQuestions = filterQuestionsByRange(range);
+    let filteredQuestions = filterQuestionsByRange(range);
     
-    if (shuffle) {
-      // Revolver las opciones de cada pregunta filtrada
-      const shuffled = filteredQuestions.map(question => shuffleOptions(question));
-      setShuffledQuestions(shuffled);
-    } else {
-      setShuffledQuestions(filteredQuestions);
+    if (mode === 'shuffle') {
+      // Solo revolver las opciones de respuesta
+      filteredQuestions = filteredQuestions.map(question => shuffleOptions(question));
+    } else if (mode === 'diablo') {
+      // MODO DIABLO: Revolver orden de preguntas Y opciones
+      filteredQuestions = shuffleQuestions(filteredQuestions);
+      filteredQuestions = filteredQuestions.map(question => shuffleOptions(question));
     }
     
+    setShuffledQuestions(filteredQuestions);
     setShowStart(false);
   };
 
@@ -118,6 +132,7 @@ const Quiz = () => {
     setShuffleMode(false);
     setShuffledQuestions([]);
     setSelectedRange('all');
+    setCurrentMode('normal');
   };
 
   const handleExit = () => {
@@ -227,7 +242,7 @@ const Quiz = () => {
                   <span className="mode-icon">📋</span>
                   <div className="mode-info">
                     <h4>Quiz Normal</h4>
-                    <p>Las respuestas aparecen en el mismo orden</p>
+                    <p>Preguntas y respuestas en orden</p>
                   </div>
                 </div>
               </label>
@@ -242,7 +257,22 @@ const Quiz = () => {
                   <span className="mode-icon">🔀</span>
                   <div className="mode-info">
                     <h4>Respuestas Revueltas</h4>
-                    <p>Las opciones aparecen en orden aleatorio</p>
+                    <p>Solo las opciones en orden aleatorio</p>
+                  </div>
+                </div>
+              </label>
+
+              <label className="mode-option">
+                <input
+                  type="radio"
+                  name="quizMode"
+                  value="diablo"
+                />
+                <div className="mode-content mode-diablo">
+                  <span className="mode-icon">😈</span>
+                  <div className="mode-info">
+                    <h4>Modo Diablo</h4>
+                    <p>Preguntas Y respuestas revueltas</p>
                   </div>
                 </div>
               </label>
@@ -254,7 +284,7 @@ const Quiz = () => {
             onClick={() => {
               const selectedMode = document.querySelector('input[name="quizMode"]:checked').value;
               const selectedRange = document.querySelector('input[name="questionRange"]:checked').value;
-              handleStart(selectedMode === 'shuffle', selectedRange);
+              handleStart(selectedMode, selectedRange);
             }}
           >
             🚀 Comenzar Quiz
@@ -279,10 +309,17 @@ const Quiz = () => {
       <div className="quiz-header">
         <h1>🔐 Quiz de Ciberseguridad</h1>
         
-        {shuffleMode && (
-          <div className="mode-badge">
+        {currentMode === 'shuffle' && (
+          <div className="mode-badge mode-badge-shuffle">
             <span className="mode-badge-icon">🔀</span>
             <span>Modo: Respuestas Revueltas</span>
+          </div>
+        )}
+        
+        {currentMode === 'diablo' && (
+          <div className="mode-badge mode-badge-diablo">
+            <span className="mode-badge-icon">😈</span>
+            <span>Modo: DIABLO (Todo Revuelto)</span>
           </div>
         )}
 
