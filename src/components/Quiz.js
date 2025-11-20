@@ -14,6 +14,7 @@ const Quiz = () => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [shuffleMode, setShuffleMode] = useState(false);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
+  const [selectedRange, setSelectedRange] = useState('all');
 
   // Función para revolver las opciones de una pregunta
   const shuffleOptions = (question) => {
@@ -40,15 +41,32 @@ const Quiz = () => {
     };
   };
 
-  const handleStart = (shuffle = false) => {
+  // Función para filtrar preguntas por rango
+  const filterQuestionsByRange = (range) => {
+    switch (range) {
+      case 'range1':
+        return questionsData.slice(0, 100); // Preguntas 1-100
+      case 'range2':
+        return questionsData.slice(100, 170); // Preguntas 101-170
+      case 'all':
+      default:
+        return questionsData; // Todas las preguntas
+    }
+  };
+
+  const handleStart = (shuffle = false, range = 'all') => {
     setShuffleMode(shuffle);
+    setSelectedRange(range);
+    
+    // Filtrar preguntas por rango
+    const filteredQuestions = filterQuestionsByRange(range);
     
     if (shuffle) {
-      // Revolver las opciones de cada pregunta
-      const shuffled = questionsData.map(question => shuffleOptions(question));
+      // Revolver las opciones de cada pregunta filtrada
+      const shuffled = filteredQuestions.map(question => shuffleOptions(question));
       setShuffledQuestions(shuffled);
     } else {
-      setShuffledQuestions(questionsData);
+      setShuffledQuestions(filteredQuestions);
     }
     
     setShowStart(false);
@@ -99,6 +117,7 @@ const Quiz = () => {
     setIsCorrect(false);
     setShuffleMode(false);
     setShuffledQuestions([]);
+    setSelectedRange('all');
   };
 
   const handleExit = () => {
@@ -143,6 +162,57 @@ const Quiz = () => {
             </div>
           </div>
 
+          <div className="range-selection">
+            <h3 className="range-title">Selecciona el rango de preguntas:</h3>
+            <div className="range-options">
+              <label className="range-option">
+                <input
+                  type="radio"
+                  name="questionRange"
+                  value="range1"
+                  defaultChecked
+                />
+                <div className="range-content">
+                  <span className="range-icon">1️⃣</span>
+                  <div className="range-info">
+                    <h4>Preguntas 1-100</h4>
+                    <p>Primeras 100 preguntas</p>
+                  </div>
+                </div>
+              </label>
+              
+              <label className="range-option">
+                <input
+                  type="radio"
+                  name="questionRange"
+                  value="range2"
+                />
+                <div className="range-content">
+                  <span className="range-icon">2️⃣</span>
+                  <div className="range-info">
+                    <h4>Preguntas 101-170</h4>
+                    <p>Últimas 70 preguntas</p>
+                  </div>
+                </div>
+              </label>
+
+              <label className="range-option">
+                <input
+                  type="radio"
+                  name="questionRange"
+                  value="all"
+                />
+                <div className="range-content">
+                  <span className="range-icon">📚</span>
+                  <div className="range-info">
+                    <h4>Todas las Preguntas</h4>
+                    <p>Las 170 preguntas completas</p>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
           <div className="mode-selection">
             <h3 className="mode-title">Selecciona el modo de quiz:</h3>
             <div className="mode-options">
@@ -183,7 +253,8 @@ const Quiz = () => {
             className="btn btn-start" 
             onClick={() => {
               const selectedMode = document.querySelector('input[name="quizMode"]:checked').value;
-              handleStart(selectedMode === 'shuffle');
+              const selectedRange = document.querySelector('input[name="questionRange"]:checked').value;
+              handleStart(selectedMode === 'shuffle', selectedRange);
             }}
           >
             🚀 Comenzar Quiz

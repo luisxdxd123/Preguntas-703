@@ -113,10 +113,84 @@
   }
 }
 
+/* Range Selection */
+.range-selection {
+  margin: 40px 0 20px 0;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.range-title {
+  color: #2c3e50;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.range-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.range-option {
+  cursor: pointer;
+  display: block;
+}
+
+.range-option input[type="radio"] {
+  display: none;
+}
+
+.range-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.range-option:hover .range-content {
+  background: #e9ecef;
+  border-color: #3498db;
+  transform: translateY(-2px);
+}
+
+.range-option input[type="radio"]:checked + .range-content {
+  background: linear-gradient(135deg, #3498db15, #2ecc7115);
+  border-color: #3498db;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+}
+
+.range-icon {
+  font-size: 2em;
+  flex-shrink: 0;
+}
+
+.range-info {
+  text-align: left;
+}
+
+.range-info h4 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  font-size: 1.1em;
+}
+
+.range-info p {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
 /* Mode Selection */
 .mode-selection {
-  margin: 40px 0;
-  animation: fadeInUp 0.6s ease 0.3s both;
+  margin: 20px 0 40px 0;
+  animation: fadeInUp 0.6s ease 0.4s both;
 }
 
 .mode-title {
@@ -379,6 +453,10 @@
     grid-template-columns: 1fr;
   }
   
+  .range-options {
+    grid-template-columns: 1fr;
+  }
+  
   .mode-options {
     grid-template-columns: 1fr;
   }
@@ -426,8 +504,41 @@
     line-height: 1.3;
   }
 
+  .range-selection {
+    margin: 20px 0 15px 0;
+  }
+
+  .range-title {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+  }
+
+  .range-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .range-content {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .range-icon {
+    font-size: 1.5em;
+  }
+
+  .range-info h4 {
+    font-size: 1em;
+  }
+
+  .range-info p {
+    font-size: 0.85em;
+    line-height: 1.3;
+  }
+
   .mode-selection {
-    margin: 20px 0;
+    margin: 15px 0 20px 0;
   }
 
   .mode-title {
@@ -508,6 +619,22 @@
   }
 
   .info-card p {
+    font-size: 0.8em;
+  }
+
+  .range-title {
+    font-size: 1em;
+  }
+
+  .range-content {
+    padding: 12px;
+  }
+
+  .range-info h4 {
+    font-size: 0.95em;
+  }
+
+  .range-info p {
     font-size: 0.8em;
   }
 
